@@ -66,10 +66,13 @@ fn main() {
             });
 
             let mut buf = Vec::new();
-            let mut writer = kml::KmlWriter::from_writer(&mut buf);
-            writer.write(&document).expect("ошибка в записи файла");
-            let mut kml_file = fs::File::create("foot.kml").expect("не получилось создать файл");
-            kml_file.write_all(&buf).expect("проблема");
+            kml::KmlWriter::from_writer(&mut buf)
+                .write(&document)
+                .expect("ошибка в записи файла");
+            fs::File::create("foot.kml")
+                .expect("не получилось создать файл")
+                .write_all(&buf)
+                .expect("не получилось записать файл");
         }
         Err(e) => panic!("лох, у тебя ошибка: {}", e),
     }
