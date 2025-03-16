@@ -40,7 +40,7 @@ fn main() {
                     content: Some(field.name.clone()),
                     attrs: HashMap::new(),
                     children: Vec::new(),
-                    a               };
+                };
                 let area_tag = Element {
                     name: String::from("area"),
                     content: Some(field.area_etalon_hectare.to_string().clone()),
