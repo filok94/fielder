@@ -1,4 +1,4 @@
-use std::fs;
+use std::{fs, path::PathBuf};
 
 use geo::Geometry;
 use serde::Deserialize;
@@ -43,7 +43,7 @@ impl FieldRecord {
     }
 }
 
-pub fn write_shapefile(json_file_path: String) {
+pub fn write_shapefile(json_file_path: PathBuf) {
     let mut shapefile_name = Uuid::new_v4().to_string();
     shapefile_name.push_str(".shp");
 
