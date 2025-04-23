@@ -6,10 +6,6 @@ use uuid::Uuid;
 #[derive(Parser)]
 #[command(version, about, long_about = None, display_name="abobus")]
 pub struct Cli {
-    /// принимает файл, в котором будут находиться записи для работы
-    #[arg(short, long, value_name = "FILE")]
-    pub config: Option<PathBuf>,
-
     #[command(subcommand)]
     pub command: Option<Commands>,
 }
@@ -17,11 +13,18 @@ pub struct Cli {
 #[derive(Subcommand)]
 pub enum Commands {
     ///  шейпфайл из геожсона
-    Shape,
+    Shape(AddArgsToShapefile),
     /// кмл из жсона
     Kml,
     /// трек для мониторинга
     Tracker(AddArgsToTracker),
+}
+
+#[derive(Args)]
+pub struct AddArgsToShapefile {
+    /// принимает файл, в котором будут находиться записи для работы
+    #[arg(short, long, value_name = "FILE")]
+    pub config: PathBuf,
 }
 
 #[derive(Args)]
