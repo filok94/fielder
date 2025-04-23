@@ -43,7 +43,7 @@ impl FieldRecord {
     }
 }
 
-pub fn write_shapefile(json_file_path: PathBuf) {
+pub fn write_shapefile(json_file_path: &PathBuf) {
     let mut shapefile_name = Uuid::new_v4().to_string();
     shapefile_name.push_str(".shp");
 
